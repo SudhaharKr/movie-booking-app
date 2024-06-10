@@ -1,11 +1,20 @@
 import { useRef, useState } from "react";
-import { FaMotorcycle, FaCar, FaPlay } from "react-icons/fa";
+import {
+  FaMotorcycle,
+  FaCar,
+  FaPlay,
+  FaAngleLeft,
+  FaAngleRight,
+} from "react-icons/fa";
 import ReactToPrint from "react-to-print";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+("");
+import "swiper/css/navigation";
 
 const MovieBooking = () => {
   const [step, setStep] = useState(1);
@@ -17,16 +26,14 @@ const MovieBooking = () => {
   const [isBooked, setIsBooked] = useState(false);
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
   const [convenienceFees] = useState(false);
-  const [selectedTime, setSelectedTime] = useState("");
-   const [paymentOption, setPaymentOption] = useState("");
+  const [setSelectedTime] = useState("");
+  const [paymentOption, setPaymentOption] = useState("");
   const componentRef = useRef();
-
 
   const screens = [
     {
       id: 1,
       name: "Shanthi Talkies",
-      time: "10.45am",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
         label: `A${i + 1}`,
@@ -38,7 +45,6 @@ const MovieBooking = () => {
     {
       id: 2,
       name: "Archana Cinemas",
-      time: "10.45am",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
         label: `A${i + 1}`,
@@ -50,7 +56,6 @@ const MovieBooking = () => {
     {
       id: 3,
       name: "Mayil Cinemas",
-      time: "02.20pm",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
         label: `A${i + 1}`,
@@ -74,7 +79,6 @@ const MovieBooking = () => {
     {
       id: 5,
       name: "Manish Talkies",
-      time: "10.45am",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
         label: `A${i + 1}`,
@@ -86,7 +90,6 @@ const MovieBooking = () => {
     {
       id: 6,
       name: "Ramba Cinemas",
-      time: "10.45am",
       seats: Array.from({ length: 60 }, (_, i) => ({
         label: `A${i + 1}`,
         occupied: false,
@@ -105,75 +108,85 @@ const MovieBooking = () => {
       })),
       price: 140,
     },
+    {
+      id: 8,
+      name: "Megastar Cinemas",
+      seats: Array.from({ length: 60 }, (_, i) => ({
+        id: i + 1,
+        label: `E${i + 1}`,
+        occupied: false,
+      })),
+      price: 140,
+    },
   ];
 
   const movies = [
     {
       id: 1,
-      title: "Inga NaanThaan Kingu",
+      title: "BAD BOYS RIDE OR DIE",
       description: "Comedy/Crime",
       certification: "U",
       duration: { hours: 2, minutes: 12 },
       languages: ["Tamil"],
       image:
-        "https://www.ajanthacinema.com/uploads/movie/MOV6779124883/t3_06698202405132121.jpg",
+        "https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/28554_86byWW56.jpg",
       seatPrice: 140,
       rating: "7.4",
       trailerUrl:
-        "https://www.youtube.com/embed/0vHcyPjiTRg?si=tBapFI6wrhFzDNhM",
+        "https://www.youtube.com/embed/hRFY_Fesa9Q?si=u56Uk6_v2MVF-i1z",
     },
     {
       id: 2,
-      title: "Aranmanai 4",
+      title: "INDIAN - 1",
       description: "Comedy/Horror",
       certification: "U/A",
       duration: { hours: 2, minutes: 28 },
       languages: ["Tamil"],
       image:
-        "https://www.elloracinema.com/uploads/movie/MOV7345326931/t3_90447202404291755.jpg",
+        "https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/30339_WZAZiEYA.jpg",
       seatPrice: 140,
       rating: "7.7",
       trailerUrl:
-        "https://www.youtube.com/embed/Keck4iVUUdE?si=8_dlo1eUxunYXulo",
+        "https://www.youtube.com/embed/fIKwCDuNqvg?si=nuKfv6y4rBxxbJ_A",
     },
     {
       id: 3,
-      title: "Election",
+      title: "WEAPON",
       description: "Political/Thriller",
       certification: "U/A",
       duration: { hours: 2, minutes: 0 },
       languages: ["Tamil"],
       image:
-        "https://www.amuthatheatres.com/uploads/movie/MOV7845457867/t3_06685202405151134.jpg",
+        "https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/28502_EaaoNr6r.jpg",
       seatPrice: 140,
       rating: "8.4",
       trailerUrl:
-        "https://www.youtube.com/embed/YnUi367jlTU?si=_anjVsIbhpkrNsB5",
+        "https://www.youtube.com/embed/QCciF0dOKR4?si=XZeO-50ze3DY5YJ-",
     },
     {
       id: 4,
-      title: "Star",
+      title: "TURBO",
       description: "Drama/Family",
       certification: "U/A",
       duration: { hours: 2, minutes: 38 },
       languages: ["Tamil"],
       image:
-        "https://www.kcineplex.in/uploads/movie/MOV5889276788/t3_95926202405071547.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_cBRa7TZYDIzfrwnZR-yBqJyX0iq84CO1eg&s",
       seatPrice: 140,
       rating: "8",
       trailerUrl:
-        "https://www.youtube.com/embed/5QlTZEogGrE?si=-O4Y4AXPGnbRBBRU",
+        "https://www.youtube.com/embed/LOE8ESPIMpE?si=TurKTbcRW__0IHP4",
     },
     {
       id: 5,
-      title: "Garudan",
+      title: "GARUDAN",
       description: "Drama/Action",
       ReleasedDate: "31 May 2024",
       certification: "U/A",
       duration: { hours: 2, minutes: 14 },
       languages: ["Tamil"],
       image:
-        "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzwR-WnG62lfMuPxz8sE8UPkKVIb6dMfghKw&s",
+        "https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/30150_yfgBFCJQ.jpg",
       seatPrice: 140,
       rating: "8",
       trailerUrl:
@@ -181,14 +194,14 @@ const MovieBooking = () => {
     },
     {
       id: 6,
-      title: "Hit List",
+      title: "HIT LIST",
       description: "Drama/Action",
       certification: "U/A",
       ReleasedDate: "31 May 2024",
       duration: { hours: 2, minutes: 7 },
       languages: ["Tamil, Telugu"],
       image:
-        "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtiJ4XcaFlRWOGfOSsZ657KE5ekcNXUh687g&s",
+        "	https://mellowplex.s3.amazonaws.com/uploads/item/asset/77840/Hit_List_Profile_Picture_1.jpeg",
       seatPrice: 140,
       rating: "8",
       trailerUrl:
@@ -196,40 +209,35 @@ const MovieBooking = () => {
     },
     {
       id: 7,
-      title: "The Akaali",
+      title: "ANJAMMAI",
       description: "Drama/Action",
       certification: "A",
       ReleasedDate: "31 May 2024",
       duration: { hours: 2, minutes: 25 },
       languages: ["Tamil"],
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb_3cvUFknzNups4_sn7x_p9mgcsCkRel-Nw&s",
+        "	https://originserver-static1-uat.pvrcinemas.com/pvrcms/movie_v/30343_KfsmXJFS.jpg",
       seatPrice: 140,
       rating: "8",
       trailerUrl:
-        "https://www.youtube.com/embed/RIOVez2ptrA?si=WYklkvnVNmrjnkoa",
+        "https://www.youtube.com/embed/gtfxB_B4-fI?si=IqCCOJbywxRdy01k",
     },
-  ];
-
-  const newMovies = [
     {
-      id: 1,
-      title: "Anjammai",
+      id: 7,
+      title: "HARAA",
       description: "Drama/Action",
-      certification: "A",
+      certification: "U",
       ReleasedDate: "31 May 2024",
-      duration: { hours: 2, minutes: 25 },
+      duration: { hours: 2, minutes: 10 },
       languages: ["Tamil"],
       image:
-        "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…vQAi8ZGQsOg5ArC/EYg21dPSMjI0P6gMv9MXRkZGR2HGf/9k=",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsOCl1-5YS5TzIzLb1vweda-YYfHZmN34dcQ&s",
       seatPrice: 140,
-      rating: "8",
+      rating: "8.9",
       trailerUrl:
-        "https://www.youtube.com/embed/RIOVez2ptrA?si=WYklkvnVNmrjnkoa",
+        "https://www.youtube.com/embed/AeZAeRMwZh0?si=Qi4uBxAPvSlZCc4_",
     },
   ];
-
- 
 
   const snacks = [
     {
@@ -247,7 +255,7 @@ const MovieBooking = () => {
     },
     {
       id: 3,
-      name: "Roce Milk",
+      name: "Rose Milk",
       price: 60,
       image:
         "https://in.bmscdn.com/fnb/v3/xxhdpi/1174632_1924_27032023173037.png",
@@ -296,6 +304,7 @@ const MovieBooking = () => {
     },
   ];
 
+ 
   const netBankingLogo = [
     {
       name: "Karur Vysya Bank",
@@ -380,12 +389,13 @@ const MovieBooking = () => {
     );
   };
 
-  const handleSnackToggle = (snack) => {
-    setSelectedSnacks((prevSelectedSnacks) =>
-      prevSelectedSnacks.includes(snack)
-        ? prevSelectedSnacks.filter((s) => s.id !== snack.id)
-        : [...prevSelectedSnacks, snack]
-    );
+  const toggleSnackSelection = (snack) => {
+    if (selectedSnacks.includes(snack)) {
+      setSelectedSnacks(selectedSnacks.filter((s) => s !== snack));
+    } else {
+      setSelectedSnacks([...selectedSnacks, snack]);
+    }
+    handleSnackToggle(snack);
   };
 
   const handleBookTicket = () => {
@@ -425,16 +435,19 @@ const MovieBooking = () => {
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
-          loop={true}
-          pagination={{
-            clickable: true,
+          centeredSlides
+          loop
+          speed={1000}
+          navigation={{
+            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next",
           }}
-          
-          modules={[Pagination, Navigation]}
-          className="bg-red-500"
+          modules={[Navigation, Autoplay]}
+          autoplay
+          className=""
         >
           <SwiperSlide>
-            <div className="bg-gradient-to-r from-blue-900 to-green-500 text-white py-20 px-8">
+            <div className="bg-gradient-to-r from-blue-900 to-green-500 text-white py-20 px-8 h-[65vh]">
               <div className="max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl lg:text-6xl font-bold mb-4">
                   Welcome to KRS CINEMAS
@@ -451,15 +464,75 @@ const MovieBooking = () => {
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide className="flex">Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          {/* Add more slides as needed */}
+          <SwiperSlide className="flex flex-wrap w-[50%]">
+            <div className="flex gap-6">
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzwR-WnG62lfMuPxz8sE8UPkKVIb6dMfghKw&s  "
+                alt=""
+              />
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="https://www.amuthatheatres.com/uploads/movie/MOV7279155499/t3_02964202406051837.jpg"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-wrap w-[50%]">
+            <div className="flex gap-6">
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="https://www.amuthatheatres.com/uploads/movie/MOV5900723373/t3_47440202406061543.jpg"
+                alt=""
+              />
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="	https://assets-in.bmscdn.com/discovery-catalog/events/et00399402-vepbpgzdnj-landscape.jpg"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-wrap w-[50%]">
+            <div className="flex gap-6">
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP8O3UZ2yqSrJnmjUSd3Zz7iJMBnHt6LNPCg&s"
+                alt=""
+              />
+              <img
+                className=" w-[700px] h-[66vh]"
+                src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzbInMAG2DbIcCIJZLzEIdS51dzqqeAJHlLA&s"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-wrap w-[50%]">
+            <div className="flex gap-6">
+              <img
+                className=" w-[700px]"
+                src="	https://assets-in.bmscdn.com/discovery-catalog/events/et00396952-tfvujhhwtn-landscape.jpg"
+                alt=""
+              />
+              <img
+                className=" w-[700px]"
+                src="	https://static.toiimg.com/photo/110700862.cms"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+          <div className="absolute bottom-60 left-20 right-[70px]">
+            <div className="swiper-button-prev swiper_buttons">
+              <FaAngleLeft className="swiper_icon" />
+            </div>
+            <div className="swiper-button-next swiper_buttons">
+              <FaAngleRight className="swiper_icon" />
+            </div>
+          </div>
         </Swiper>
       )}
       {step === 1 && (
         <div id="grid_box">
-          <h1 className="font-bold text-lg text-green-600 uppercase p-4 text-center">
+          <h1 className="font-bold text-lg uppercase p-4 text-center">
             Now Showing
           </h1>
           <div className="flex justify-center items-center">
@@ -578,11 +651,11 @@ const MovieBooking = () => {
       {step === 3 && selectedScreening && (
         <div>
           <h2 className="text-2xl font-bold mb-4">Select Seats</h2>
-          <div className="grid grid-cols-12 gap-4">
+          <div className="grid grid-cols-6 md:grid-cols-2 lg:grid-cols-10 gap-4">
             {selectedScreening.seats.map((seat) => (
               <div
                 key={seat.id}
-                className={`border rounded-t-3xl p-4 shadow-lg cursor-pointer ${
+                className={`border rounded-t-3xl text-center p-4 shadow-lg cursor-pointer ${
                   selectedSeats.includes(seat)
                     ? "bg-blue-500 text-white"
                     : "bg-white"
@@ -593,7 +666,7 @@ const MovieBooking = () => {
               </div>
             ))}
           </div>
-          <div className="flex justify-center gap-8 mt-4">
+          <div className="flex flex-col md:flex-row justify-center md:justify-center gap-4 mt-4 align-items">
             <button onClick={prevStep} className="text-blue-500 underline">
               Back
             </button>
@@ -606,6 +679,7 @@ const MovieBooking = () => {
           </div>
         </div>
       )}
+
       {step === 4 && (
         <div>
           <h2 className="text-3xl font-bold mb-4 p-6 shadow-2xl">
@@ -662,7 +736,7 @@ const MovieBooking = () => {
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
-                onClick={() => handleSnackToggle(snack)}
+                onClick={() => toggleSnackSelection(snack)}
               >
                 <img
                   src={snack.image}
@@ -693,6 +767,9 @@ const MovieBooking = () => {
             <div className="max-w-md mx-auto">
               <h2 className="text-xl font-semibold mb-4">
                 Choose Payment Option
+              </h2>
+              <h2 className="text-2xl font-bold mb-4">
+                Total Amount: ₹{getTotalAmount()}
               </h2>
               <div className="flex flex-col space-y-4">
                 {/* Payment options */}
@@ -869,21 +946,6 @@ const MovieBooking = () => {
                   </div>
                 )}
               </div>
-              {/* Navigation buttons */}
-              <div className="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-3">
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md mb-2 md:mb-0"
-                  onClick={prevStep}
-                >
-                  Previous
-                </button>
-                <button
-                  className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center justify-center"
-                  onClick={nextStep}
-                >
-                  Next
-                </button>
-              </div>
             </div>
           </div>
 
@@ -905,9 +967,6 @@ const MovieBooking = () => {
             </div>
           )}
 
-          <h2 className="text-2xl font-bold mb-4">
-            Total Amount: ₹{getTotalAmount()}
-          </h2>
           <div className="flex justify-center gap-6 mt-4">
             <button onClick={prevStep} className="text-blue-500 underline">
               Back
@@ -924,8 +983,6 @@ const MovieBooking = () => {
 
       {isBooked && (
         <div>
-          <h2 className="text-2xl font-bold mb-4">Booking Successful!</h2>
-          <p>Your booking is confirmed. Enjoy your movie!</p>
           <div className="container mx-auto p-4">
             <div className="mt-8">
               <ReactToPrint
@@ -942,7 +999,7 @@ const MovieBooking = () => {
               />
               <div
                 ref={componentRef}
-                className="p-4 border rounded-md bg-green-300"
+                className="p-4 border rounded-md bg-green-100"
               >
                 <h2 className="text-xl font-semibold mb-4 text-center">
                   {selectedScreening.name} Invoice
@@ -960,22 +1017,14 @@ const MovieBooking = () => {
                     <span>Screen</span>
                     <span>{selectedScreening.name}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Show time</span>
-                    <span>{selectedScreening.time}</span>
-                  </div>
+
                   <div className="flex justify-between">
                     <span>Seats</span>
                     <span>
                       {selectedSeats.map((seat) => seat.label).join(", ")}
                     </span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Snacks</span>
-                    <span>
-                      {selectedSeats.map((seat) => seat.label).join(", ")}
-                    </span>
-                  </div>
+
                   <div className="flex justify-between">
                     <span>Movie Ticket</span>
                     <span>₹{getTotalAmount()}</span>
@@ -988,10 +1037,63 @@ const MovieBooking = () => {
                     </span>
                   </div>
                 </div>
-                <p className="font-semibold text-center">
-                  Enjoy the Experience! Come Again
-                </p>
+
+                <div className="mt-4 font-semibold text-center text-red-600 bg-blue-200 p-10 leading-loose rounded-xl">
+                  <h1 className="text-black">Important Notes:</h1>
+                  <ul className="list-disc text-left mt-6">
+                    <li>
+                      Tickets & food once ordered cannot be exchanged, cancelled
+                      or refunded.
+                    </li>
+                    <li>
+                      Children aged 3 years and above will require a separate
+                      ticket.
+                    </li>
+                    <li>
+                      The 3D glasses will be available at the cinema for 3D
+                      films and must be returned before you exit the premises.
+                      3D Glasses are chargeable (refundable/ non-refundable) as
+                      per individual cinema policies
+                    </li>
+                    <li>
+                      Items like laptop, cameras,knifes, lighter,match box,
+                      cigarettes, firearms and all types of inflammable objects
+                      are strictly prohibited.
+                    </li>
+                    <li>
+                      Items like carrybags eatables, helmets, handbags are not
+                      allowed inside the theaters are strictly prohibited.
+                      Kindly deposit at the baggage counter ofmall/ cinema
+                    </li>
+                  </ul>
+                  <div className="mt-4 font-semibold text-center text-red-600 bg-blue-200">
+                    <p className="text-justify">
+                      Please check the suitability of the movie as per the
+                      Censor Board rating. Cinema management holds Rights of
+                      Admission and can deny admission forcompliance of cinema
+                      policies.
+                    </p>
+                    <ul className="list-disc text-left">
+                      <li>
+                        U : Unrestricted Public Exhibition throughout India,
+                        suitable for all age groups
+                      </li>
+                      <li>
+                        A : Viewing restricted to adults above 18 years only
+                      </li>
+                      <li>
+                        U/A : Unrestricted public exhibition with parental
+                        guidance for children below age 12
+                      </li>
+                      <li>
+                        S : Film is meant for specialized audience such as
+                        doctors
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+
               <div className="flex justify-center space-x-4">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"

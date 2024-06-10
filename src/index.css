@@ -5,3 +5,22 @@
 html {
   scroll-behavior: smooth;
 }
+
+
+    .swiper_buttons{
+        @apply !w-[50px] !h-[50px] rounded-full border-2 border-white
+    }
+    .swiper_icon{
+        @apply !w-[25px] !h-[25px] !text-green-700 
+    }
+
+.swiper-button-active {
+  width: 50vw !important;
+}
+.swiper-button-prev .swiper-button-next {
+  width: 25vw !important;
+}
+
+.swiper-button-prev::after,.swiper-button-next::after{
+    display: none !important;
+}
