@@ -34,7 +34,7 @@ const MovieBooking = () => {
     {
       id: 1,
       name: "Shanthi Talkies",
-      seats: Array.from({ length: 60 }, (_, i) => ({
+      seats: Array.from({ length: 80 }, (_, i) => ({
         id: i + 1,
         label: `A${i + 1}`,
         occupied: false,
@@ -45,9 +45,9 @@ const MovieBooking = () => {
     {
       id: 2,
       name: "Archana Cinemas",
-      seats: Array.from({ length: 60 }, (_, i) => ({
+      seats: Array.from({ length: 80 }, (_, i) => ({
         id: i + 1,
-        label: `A${i + 1}`,
+        label: `B${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -58,7 +58,7 @@ const MovieBooking = () => {
       name: "Mayil Cinemas",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
-        label: `A${i + 1}`,
+        label: `C${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -70,7 +70,7 @@ const MovieBooking = () => {
       time: "10.45am",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
-        label: `A${i + 1}`,
+        label: `D${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -395,7 +395,6 @@ const MovieBooking = () => {
     } else {
       setSelectedSnacks([...selectedSnacks, snack]);
     }
-    handleSnackToggle(snack);
   };
 
   const handleBookTicket = () => {
@@ -651,20 +650,53 @@ const MovieBooking = () => {
       {step === 3 && selectedScreening && (
         <div>
           <h2 className="text-2xl font-bold mb-4">Select Seats</h2>
-          <div className="grid grid-cols-6 md:grid-cols-2 lg:grid-cols-10 gap-4">
-            {selectedScreening.seats.map((seat) => (
-              <div
-                key={seat.id}
-                className={`border rounded-t-3xl text-center p-4 shadow-lg cursor-pointer ${
-                  selectedSeats.includes(seat)
-                    ? "bg-blue-500 text-white"
-                    : "bg-white"
-                }`}
-                onClick={() => handleSeatToggle(seat)}
-              >
-                {seat.label}
+          <div className="flex flex-col md:flex-row gap-4">
+            {/* Left column for A1-20 to Z1-20 */}
+            <div className="w-full md:w-1/2">
+              <div className="grid grid-cols-2 lg:grid-cols-8 gap-4">
+                {selectedScreening.seats
+                  .filter((seat) => {
+                    const seatNumber = parseInt(seat.label.slice(1));
+                    return seatNumber >= 1 && seatNumber <= 40;
+                  })
+                  .map((seat) => (
+                    <div
+                      key={seat.id}
+                      className={`border rounded-t-3xl text-center p-4 shadow-lg cursor-pointer ${
+                        selectedSeats.includes(seat)
+                          ? "bg-blue-500 text-white"
+                          : "bg-white"
+                      }`}
+                      onClick={() => handleSeatToggle(seat)}
+                    >
+                      {seat.label}
+                    </div>
+                  ))}
               </div>
-            ))}
+            </div>
+            {/* Right column for A21-40 to Z21-40 */}
+            <div className="w-full md:w-1/2">
+              <div className="grid grid-cols-2 lg:grid-cols-8 gap-4">
+                {selectedScreening.seats
+                  .filter((seat) => {
+                    const seatNumber = parseInt(seat.label.slice(1));
+                    return seatNumber >= 40 && seatNumber <= 80;
+                  })
+                  .map((seat) => (
+                    <div
+                      key={seat.id}
+                      className={`border rounded-t-3xl text-center p-4 shadow-lg cursor-pointer ${
+                        selectedSeats.includes(seat)
+                          ? "bg-blue-500 text-white"
+                          : "bg-white"
+                      }`}
+                      onClick={() => handleSeatToggle(seat)}
+                    >
+                      {seat.label}
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
           <div className="flex flex-col md:flex-row justify-center md:justify-center gap-4 mt-4 align-items">
             <button onClick={prevStep} className="text-blue-500 underline">
