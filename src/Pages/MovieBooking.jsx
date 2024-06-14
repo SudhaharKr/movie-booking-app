@@ -67,7 +67,7 @@ const MovieBooking = () => {
     {
       id: 4,
       name: "Web Talkies",
-      time: "10.45am",
+
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
         label: `D${i + 1}`,
@@ -81,7 +81,7 @@ const MovieBooking = () => {
       name: "Manish Talkies",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
-        label: `A${i + 1}`,
+        label: `E${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -91,7 +91,7 @@ const MovieBooking = () => {
       id: 6,
       name: "Ramba Cinemas",
       seats: Array.from({ length: 60 }, (_, i) => ({
-        label: `A${i + 1}`,
+        label: `F${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -100,10 +100,9 @@ const MovieBooking = () => {
     {
       id: 7,
       name: "Chinthamani Talkies",
-      time: "10.15pm",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
-        label: `D${i + 1}`,
+        label: `G${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -113,7 +112,7 @@ const MovieBooking = () => {
       name: "Megastar Cinemas",
       seats: Array.from({ length: 60 }, (_, i) => ({
         id: i + 1,
-        label: `E${i + 1}`,
+        label: `H${i + 1}`,
         occupied: false,
       })),
       price: 140,
@@ -124,7 +123,7 @@ const MovieBooking = () => {
     {
       id: 1,
       title: "BAD BOYS RIDE OR DIE",
-      description: "Comedy/Crime",
+      description: "Action/ Adventure/ Comedy",
       certification: "U",
       duration: { hours: 2, minutes: 12 },
       languages: ["Tamil"],
@@ -138,7 +137,7 @@ const MovieBooking = () => {
     {
       id: 2,
       title: "INDIAN - 1",
-      description: "Comedy/Horror",
+      description: "Action/ Crime",
       certification: "U/A",
       duration: { hours: 2, minutes: 28 },
       languages: ["Tamil"],
@@ -152,7 +151,7 @@ const MovieBooking = () => {
     {
       id: 3,
       title: "WEAPON",
-      description: "Political/Thriller",
+      description: "Sci-Fi/ Thriller",
       certification: "U/A",
       duration: { hours: 2, minutes: 0 },
       languages: ["Tamil"],
@@ -169,7 +168,7 @@ const MovieBooking = () => {
       description: "Drama/Family",
       certification: "U/A",
       duration: { hours: 2, minutes: 38 },
-      languages: ["Tamil"],
+      languages: ["Malayalam"],
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_cBRa7TZYDIzfrwnZR-yBqJyX0iq84CO1eg&s",
       seatPrice: 140,
@@ -199,7 +198,7 @@ const MovieBooking = () => {
       certification: "U/A",
       ReleasedDate: "31 May 2024",
       duration: { hours: 2, minutes: 7 },
-      languages: ["Tamil, Telugu"],
+      languages: ["Tamil"],
       image:
         "	https://mellowplex.s3.amazonaws.com/uploads/item/asset/77840/Hit_List_Profile_Picture_1.jpeg",
       seatPrice: 140,
@@ -304,7 +303,6 @@ const MovieBooking = () => {
     },
   ];
 
- 
   const netBankingLogo = [
     {
       name: "Karur Vysya Bank",
@@ -653,7 +651,7 @@ const MovieBooking = () => {
           <div className="flex flex-col md:flex-row gap-4">
             {/* Left column for A1-20 to Z1-20 */}
             <div className="w-full md:w-1/2">
-              <div className="grid grid-cols-2 lg:grid-cols-8 gap-4">
+              <div className="grid grid-cols-5 lg:grid-cols-8 gap-4">
                 {selectedScreening.seats
                   .filter((seat) => {
                     const seatNumber = parseInt(seat.label.slice(1));
@@ -676,7 +674,7 @@ const MovieBooking = () => {
             </div>
             {/* Right column for A21-40 to Z21-40 */}
             <div className="w-full md:w-1/2">
-              <div className="grid grid-cols-2 lg:grid-cols-8 gap-4">
+              <div className="grid grid-cols-4 lg:grid-cols-8 gap-4">
                 {selectedScreening.seats
                   .filter((seat) => {
                     const seatNumber = parseInt(seat.label.slice(1));
